@@ -1,0 +1,231 @@
+System    Date    Size  BASIC  Model     Assembler
+PC      04/24/81  40KB  C1.00  FF        ASM86 1.x
+PC      10/19/81  40KB  C1.00  FF        ASM86 1.x
+PC      10/27/82  40KB  C1.00  FF        ASM86 2.x
+XT      11/08/82  40KB  C1.10  FE        ASM86 2.x
+JR      06/01/83  64KB  C1.20  FD        MASM 1.0
+AT      01/10/84  64KB  C1.10  FC        MASM 1.0
+AT      06/10/85  64KB  C1.10  FC,00,01  MASM 2.0
+CONV    09/13/85  64KB  C1.10  F9,00,00  MASM 2.0
+AT      11/15/85  64KB  C1.10  FC,01,00  MASM 2.0
+XT      01/10/86  64KB  C1.10  FB,00,01  MASM 2.0
+XT286   04/21/86  64KB  C1.10  FC,02,00  MASM 2.0
+XT      05/09/86  64KB  C1.10  FB,00,02  MASM 2.0
+
+
+PC BIOS version 1 (04/24/81)
+40KB, includes BASIC C1.00
+model byte FF
+1 source file, built with Intel ASM86 1.x
+only recognizes up to 544KB
+360KB floppy disks supported
+cassette port supported
+BIOS functions:
+• INT 05 (print screen) (F000:FF54)
+• INT 08 (IRQ0 - timer interrupt) (F000:FEA5)
+• INT 09 (IRQ1 - keyboard interrupt) (F000:E987)
+• INT 0E (IRQ6 - floppy drive interrupt) (F000:EF57)
+• INT 10 functions 00-0F (video) (F000:F065)
+• INT 11 (equipment check) (F000:F84D)
+• INT 12 (memory size) (F000:F841)
+• INT 13 functions 00-05 (diskette) (F000:EC59)
+• INT 14 functions 00-03 (serial port) (F000:E739)
+• INT 15 functions 00-03 (cassette port) (F000:F859)
+• INT 16 functions 00-02 (keyboard) (F000:E82E)
+• INT 17 functions 00-02 (printer) (F000:EFD2)
+• INT 18 (BASIC) (F600:0000)
+• INT 19 (bootstrap) (F000:E6F2)
+• INT 1A functions 00-01 (time of day) (F000:FE6E)
+• INT 1B (ctrl-break)
+• INT 1C (timer tick)
+• INT 1D (video parameters) (F000:F0A4)
+• INT 1E (diskette parameters) (F000:EFC7)
+• INT 1F (video font pointer)
+
+PC BIOS version 2 (10/19/81)
+40KB, includes BASIC C1.00
+model byte FF
+1 source file, built with Intel ASM86 1.x
+minor bug fixes
+BIOS functions:
+• same as PC BIOS version 1
+
+PC BIOS version 3 (10/27/82)
+40KB, includes BASIC C1.00
+model byte FF
+1 source file, built with Intel ASM86 2.x
+recognizes full 640KB
+scans for adapter ROM between segments C800 and F600
+BIOS functions:
+• same as PC BIOS version 2
+
+PC XT BIOS version 1 (11/08/82) - also used by Portable PC
+40KB, includes BASIC C1.10
+model byte FE
+1 source file, built with Intel ASM86 2.x
+cassette support dropped
+360KB floppy disks supported
+scans for adapter ROM between segments C800 and F600
+fixed disk supported by external adapter BIOS supporting INT 13 functions 00-14
+BIOS functions:
+• same as PC BIOS version 3 except INT 15 functions 00-03 (cassette port) removed
+
+PC XT BIOS version 2 (01/10/86)
+64KB, includes BASIC C1.10
+model byte FB, submodel byte 00, BIOS revision byte 01
+8 source files, 2 include files, built with IBM MASM 2.0
+360KB, 1.2MB and 720KB floppy disks supported
+enhanced keyboard supported
+scans for video ROM between segments C000 and C800
+scans for adapter ROM between segments C800 and F000
+BIOS functions: (relative to PC XT BIOS version 1)
+• INT 10 function 13 added (video)
+• INT 13 functions 08, 15-18 added (diskette)
+• INT 15 functions 4F, 80-82, 84-85, 90-91, C0 added (extended services)
+• INT 16 functions 05, 10-12 added (keyboard)
+• INT 1A functions 0A-0B added (time of day)
+
+PC XT BIOS version 3 (05/09/86)
+64KB, includes BASIC C1.10
+model byte FB, submodel byte 00, BIOS revision byte 02
+8 source files, 2 include files, built with IBM MASM 2.0
+minor bug fixes
+BIOS functions:
+• same as PC XT BIOS version 2
+
+PC AT BIOS version 1 (01/10/84) - used on 6MHz PC AT systems only
+64KB, includes BASIC C1.10
+model byte FC
+20 source files, 6 include files, built with IBM MASM 1.0
+360KB and 1.2MB floppy disks supported
+14 fixed disk types supported
+real-time clock supported
+scans for video ROM between segments C000 and C800
+scans for adapter ROM between C800 and E000
+BIOS functions:
+• INT 05 (print screen)
+• INT 08 (IRQ0 - timer interrupt)
+• INT 09 (IRQ1 - keyboard interrupt)
+• INT 0E (IRQ6 - floppy drive interrupt)
+• INT 10 functions 00-0F, 13 (video)
+• INT 11 (equipment check)
+• INT 12 (memory size)
+• INT 13 functions 00-05, 15-17 (diskette)
+• INT 13 functions 00-05, 08-0D, 10-11, 14-15 (disk)
+• INT 14 functions 00-03 (serial port)
+• INT 15 functions 80-89, 90-91 (extended services)
+• INT 16 functions 00-02 (keyboard)
+• INT 17 functions 00-02 (printer)
+• INT 18 (BASIC)
+• INT 19 (bootstrap)
+• INT 1A functions 00-07 (time of day)
+• INT 1B (ctrl-break)
+• INT 1C (timer tick)
+• INT 1D (video parameters)
+• INT 1E (diskette parameters)
+• INT 1F (video font pointer)
+• INT 41 (fixed disk 1 parameters)
+• INT 46 (fixed disk 2 parameters)
+• INT 4A (alarm)
+• INT 70 (IRQ8 - real-time clock interrupt)
+• INT 71 (IRQ9 - redirect)
+• INT 75 (IRQ13 - FPU interrupt)
+• INT 76 (IRQ14 - fixed disk interrupt)
+
+PC AT BIOS version 2 (06/10/85) - used on 6MHz PC AT systems only
+64KB, includes BASIC C1.10
+model byte FC, submodel byte 00, BIOS revision byte 01
+16 source files, 4 include files, built with IBM MASM 2.0
+checks for a 6MHz system
+360KB, 1.2MB and 720KB floppy disks supported
+22 fixed disk types supported
+BIOS functions: (relative to PC AT BIOS version 1)
+• INT 13 function 08 added (diskette)
+• INT 15 functions 4F, C0 added (extended services)
+
+PC AT BIOS version 3 (11/15/85) - used on 8MHz PC AT systems only
+64KB, includes BASIC C1.10
+model byte FC, submodel byte 01, BIOS revision byte 00
+16 source files, 4 include files, built with IBM MASM 2.0
+checks for a 8MHz system
+360KB, 1.2MB, 720KB and 1.44MB floppy disks supported
+22 fixed disk types supported
+enhanced keyboard supported
+BIOS functions: (relative to PC AT BIOS version 2)
+• INT 13 function 18 added (diskette)
+• INT 16 functions 03, 05, 10-12 added (keyboard)
+
+PC XT 286 BIOS (04/21/86)
+64KB, includes BASIC C1.10
+model byte FC, submodel byte 02, BIOS revision byte 00
+16 source files, 4 include files, built with IBM MASM 2.0
+checks for a 6MHz system
+360KB, 1.2MB, 720KB and 1.44MB floppy disks supported
+23 fixed disk types supported
+real-time clock supported
+enhanced keyboard supported
+scans for video ROM between segments C000 and C800
+scans for adapter ROM between C800 and E000
+BIOS functions: (same as PC AT BIOS version 3)
+• INT 05 (print screen)
+• INT 08 (IRQ0 - timer interrupt)
+• INT 09 (IRQ1 - keyboard interrupt)
+• INT 0E (IRQ6 - floppy drive interrupt)
+• INT 10 functions 00-0F, 13 (video)
+• INT 11 (equipment check)
+• INT 12 (memory size)
+• INT 13 functions 00-05, 08, 15-18 (diskette)
+• INT 13 functions 00-05, 08-0D, 10-11, 14-15 (disk)
+• INT 14 functions 00-03 (serial port)
+• INT 15 functions 4F, 80-89, 90-91, C0 (extended services)
+• INT 16 functions 00-03, 05, 10-12 (keyboard)
+• INT 17 functions 00-02 (printer)
+• INT 18 (BASIC)
+• INT 19 (bootstrap)
+• INT 1A functions 00-07 (time of day)
+• INT 1B (ctrl-break)
+• INT 1C (timer tick)
+• INT 1D (video parameters)
+• INT 1E (diskette parameters)
+• INT 1F (video font pointer)
+• INT 41 (fixed disk 1 parameters)
+• INT 46 (fixed disk 2 parameters)
+• INT 4A (alarm)
+• INT 70 (IRQ8 - real-time clock interrupt)
+• INT 71 (IRQ9 - redirect)
+• INT 75 (IRQ13 - FPU interrupt)
+• INT 76 (IRQ14 - fixed disk interrupt)
+
+PCjr BIOS (06/01/83)
+64KB, includes BASIC C1.20
+model byte FD
+1 source file, built with IBM MASM 1.0
+360KB floppy disks supported
+cassette port supported
+scans for adapter ROM between segments C000 and F000
+BIOS functions: (relative to PC BIOS version 3)
+• INT 10 function 10 added (video)
+• INT 16 functions 03-04 added (keyboard)
+• INT 1A functions 80 added (sound)
+• INT 44 (video font pointer)
+• INT 48 (cordless keyboard scan code translation routine)
+• INT 49 (non-keyboard scan code translation table)
+
+PC Convertible BIOS (09/13/85)
+64KB, includes BASIC C1.10
+model byte F9, submodel byte 00, BIOS revision byte 00
+multiple source files, built with IBM MASM 2.0
+360KB and 720KB floppy disks supported
+real-time clock supported
+scans for video ROM between segments C000 and C800
+scans for adapter ROM between segments C800 and F000
+BIOS functions: (relative to PC BIOS version 3)
+• INT 02 (NMI - used for various system interrupts)
+• INT 10 functions 13-15 added (video)
+• INT 13 functions 08, 15-17 added (diskette)
+• INT 15 functions 00-03 (cassette port) removed
+• INT 15 functions 40-44, 4F, 80-83, 85-86, 90-91, C0 added (extended services)
+• INT 16 functions 04 added (keyboard)
+• INT 1A functions 02-09 added (time of day)
+• INT 4A (alarm)
+• INT 6C (resume vector)
