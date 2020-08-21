@@ -1,0 +1,10 @@
+n xt286.exe
+l
+r bx
+1
+r cx
+0
+n xt286.bin
+e cs:fffe fc e8
+w cs:0
+q
